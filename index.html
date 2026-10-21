@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gửi cậu một chút yêu thương 💌</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh;
+  font-family: "Trebuchet MS", sans-serif;
+  background: linear-gradient(145deg,#ffe6f2,#eee4ff,#e1f7ff);
+  color: #77568c; text-align: center;
+  overflow-x: hidden;
+}
+main { padding: 35px 18px; }
+.cloud { font-size: 38px; animation: bob 2.5s infinite ease-in-out; }
+h1 { color: #b76eaa; font-size: 27px; }
+p { line-height: 1.8; }
+.card {
+  max-width: 390px; margin: 22px auto;
+  padding: 25px 20px; border-radius: 26px;
+  background: #ffffffc9;
+  border: 2px solid white;
+  box-shadow: 0 12px 35px #b995d833;
+}
+button {
+  border: 0; border-radius: 30px;
+  background: linear-gradient(90deg,#f6a8d3,#bba5fa);
+  color: white; font-size: 17px; font-weight: bold;
+  padding: 14px 23px; cursor: pointer;
+  box-shadow: 0 5px 16px #b995d855;
+}
+button:active { transform: scale(.96); }
+#letter { display: none; animation: appear 1.3s ease; }
+#letter.show { display: block; }
+.message {
+  white-space: pre-line;
+  line-height: 2; text-align: left;
+  background: #fff5fb; padding: 17px;
+  border-radius: 18px;
+}
+.heart {
+  position: fixed; bottom: -30px;
+  pointer-events: none; animation: rise 5s linear forwards;
+}
+@keyframes rise {
+  to { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+}
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes bob {
+  50% { transform: translateY(-9px) rotate(3deg); }
+}
+footer { font-size: 12px; opacity: .7; margin-top: 24px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="cloud">☁️ 🎀 ☁️</div>
+  <h1>Hehe, có thư cho Nhi lùn nè! 💌</h1>
+  <p>Một món quà nho nhỏ dành riêng cho cậu ♡</p>
+
+  <section class="card">
+    <div style="font-size:65px">💌</div>
+    <p>From: đứa bạn siêu quậy của tôi </p>
+    <p>To: con điên của tớ 🐰💜</p>
+    <button id="openBtn" onclick="openLetter()">
+      Bấm mở thư nè ✨
+    </button>
+
+    <div id="letter">
+      <h2>Gửi cậu, con bạn cute của tớ ♡</h2>
+      <div class="message" id="message"></div>
+      <p style="font-size:26px">☁️ 💗 🖤 💜</p>
+      <button onclick="makeHearts()">Thêm chút phép màu ✨</button>
+    </div>
+  </section>
+
+  <p>૮ ˶ᵔ ᵕ ᵔ˶ ა<br>mong cậu luôn vui vẻ nha!</p>
+  <footer>made with ♡ just for you</footer>
+</main>
+
+<script>
+const words = `Cảm ơn cậu vì đã xuất hiện trong cuộc sống của tớ. 💗
+
+20/10 vui vẻ,hạnh phúc yêu đời và sớm có người yêu nha bạn Nhi,hóng quá đi,mình cược rằng Nhi sẽ có người yêu vào năm sau nếu hết năm sau mà không có thì Nhi yêu cầu gì mình cũng làm,nếu có liên quan đến tiền thì max tui cho Nhi được có 444K thôi nhe
+
+Mãi là người bạn cute như mọi khi nhaaa. ☁️🎀💜`;
+
+function openLetter() {
+  document.getElementById('letter').classList.add('show');
+  document.getElementById('openBtn').style.display = 'none';
+  document.getElementById('message').textContent = words;
+  makeHearts();
+}
+
+function makeHearts() {
+  const icons = ['💗','💜','💕','☁️','✨'];
+  for (let i = 0; i < 18; i++) {
+    const h = document.createElement('span');
+    h.className = 'heart';
+    h.textContent = icons[Math.floor(Math.random()*icons.length)];
+    h.style.left = Math.random()*100 + 'vw';
+    h.style.fontSize = (16+Math.random()*20) + 'px';
+    h.style.animationDelay = Math.random()*2 + 's';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 7500);
+  }
+}
+</script>
+</body>
+</html>
